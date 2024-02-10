@@ -1,0 +1,6 @@
+class InvalidCPF(Exception):
+    ...
+
+
+class InvalidCNPJ(Exception):
+    ...

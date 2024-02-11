@@ -10,4 +10,4 @@ class Pipeline:
 
         transformed_registers_list = Transform().serialize_registers(registers_list)
 
-        print(transformed_registers_list[0])
+        Load().save_registers(transformed_registers_list)

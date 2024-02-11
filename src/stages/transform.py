@@ -1,4 +1,5 @@
 from src.serializers import SalesRecordSerializer
+from src.helpers.exceptions import InvalidCPF, InvalidCNPJ
 
 
 class Transform:
@@ -15,7 +16,7 @@ class Transform:
                     self.__transform_into_tuple(register)
                 )
                 serialized_registers.append(serialized_register)
-            except Exception:
+            except (InvalidCPF, InvalidCNPJ):
                 ...
 
         return serialized_registers

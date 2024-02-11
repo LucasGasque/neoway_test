@@ -1,6 +1,7 @@
 from sqlmodel import create_engine, SQLModel
+from src.config import settings
 
-postgresql_connection_string = "postgresql+psycopg2://postgres:safepassword@localhost:5432/mydb"
+postgresql_connection_string = settings.POSTGRESQL_CONNECTION_STRING
 
 engine = create_engine(postgresql_connection_string)
 

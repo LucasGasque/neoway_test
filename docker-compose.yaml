@@ -1,6 +1,6 @@
 version: '3'
 services:
-  postgres:
+  db:
     image: postgres
     ports:
       - "5432:5432"
@@ -12,5 +12,7 @@ services:
     build: .
     ports:
       - "5000:5000"
-    depends_on:
-      - postgres
+    restart: on-failure
+    environment:
+      - POSTGRESQL_CONNECTION_STRING=postgresql+psycopg2://postgres:safepassword@db:5432/mydb
+    command: ["python", "./run.py"]

@@ -1,0 +1,6 @@
+.gitignore
+.dockerfile
+.docker-compose.yaml
+LICENSE
+README.me
+testes

@@ -3,7 +3,7 @@ from datetime import date
 from src.helpers.exceptions import InvalidCPF, InvalidCNPJ
 
 
-class SalesRecordSerializer(BaseModel):
+class PurchaseRecordSerializer(BaseModel):
     cpf: str
     private: str
     incomplete: str
@@ -14,7 +14,7 @@ class SalesRecordSerializer(BaseModel):
     last_purchase_store: str
 
     @classmethod
-    def from_tuple(cls, values: tuple) -> "SalesRecordSerializer":
+    def from_tuple(cls, values: tuple) -> "PurchaseRecordSerializer":
         return cls(
             cpf=values[0],
             private=values[1],
@@ -46,8 +46,8 @@ class SalesRecordSerializer(BaseModel):
 
     @field_validator("private", "incomplete")
     @classmethod
-    def validate_int(cls, value: str) -> int:
-        return int(value)
+    def validate_int(cls, value: str) -> bool:
+        return True if value == "1" else False
 
     @field_validator("average_ticket", "last_purchase_ticket")
     @classmethod

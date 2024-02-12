@@ -15,4 +15,5 @@ services:
     restart: on-failure
     environment:
       - POSTGRESQL_CONNECTION_STRING=postgresql+psycopg2://postgres:safepassword@db:5432/mydb
+      - LOGGERS=["src:DEBUG"]
     command: ["python", "./run.py"]

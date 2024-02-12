@@ -1,5 +1,8 @@
 from src.transform.serializers import PurchaseRecordSerializer
 from src.helpers.exceptions import InvalidCPF, InvalidCNPJ
+from logging import getLogger
+
+logger = getLogger(__name__)
 
 
 class Transform:
@@ -16,7 +19,11 @@ class Transform:
                     self.__transform_into_tuple(purchase_record)
                 )
                 serialized_registers.append(serialized_register)
-            except (InvalidCPF, InvalidCNPJ):
-                ...
+            except InvalidCPF:
+                logger.warning(f"Invalid CPF: {purchase_record}")
+            except InvalidCNPJ:
+                logger.warning(f"Invalid CNPJ: {purchase_record}")
+            except Exception as e:
+                logger.error(f"Error: {e}")
 
         return serialized_registers

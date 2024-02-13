@@ -18,7 +18,7 @@ jobs:
         pip install pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Executar testes
-      run: pytest --cov=./ --cov-report=xml
+      run: pytest --cov=./tests --cov-report=xml
     - name: Verificar cobertura de teste
       uses: 5monkeys/cobertura-action@master
       with:

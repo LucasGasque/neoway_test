@@ -1,6 +1,7 @@
 from pydantic import BaseModel, field_validator
 from datetime import date
 from src.helpers.exceptions import InvalidCPF, InvalidCNPJ
+from pycpfcnpj import cpfcnpj
 
 
 class PurchaseRecordSerializer(BaseModel):
@@ -38,7 +39,7 @@ class PurchaseRecordSerializer(BaseModel):
         if value == "NULL":
             return None
         cnpj = value.replace(".", "").replace("-", "").replace("/", "")
-        if len(cnpj) == 14:
+        if len(cnpj) == 14 and cpfcnpj.validate(cnpj):
             return cnpj
         raise InvalidCNPJ
 

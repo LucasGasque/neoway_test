@@ -62,3 +62,17 @@ def test_serialize_records_with_invalid_cnpj(mock_from_tuple):
 
     assert len(serialized_registers) == 0
     mock_from_tuple.assert_called_once()
+
+
+@patch("src.transform.transform.PurchaseRecordSerializer.from_tuple")
+def test_serialize_records_with_general_exception(mock_from_tuple):
+    transform = Transform()
+    purchase_records_list = [
+        "111.111.111-11 1 0 2024-02-13 100,00 50,00 11.111.111/1111-11 22.222.222/2222-22"
+    ]
+    mock_from_tuple.side_effect = Exception()
+
+    serialized_registers = transform.serialize_records(purchase_records_list)
+
+    assert len(serialized_registers) == 0
+    mock_from_tuple.assert_called_once()

@@ -30,4 +30,4 @@ o Docker irá então criar dois containers, um para rodar a aplicação e outro 
 
 # 🖥️ Dev
 
-- Made with ❤️ by [Lucas Gasque](https://www.linkedin.com/in/lucasgasque/
+- Made with ❤️ by [Lucas Gasque](https://www.linkedin.com/in/lucasgasque/)
